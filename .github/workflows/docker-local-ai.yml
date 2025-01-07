@@ -30,14 +30,11 @@ jobs:
           docker run -d --gpus all --name local-ai -p 8080:8080 localai/localai:latest-gpu-nvidia-cuda-12
 
       - name: Save Docker Container State
-        run: |
-          echo "DOCKER_CONTAINER_STATE=running" >> $GITHUB_STATE
+        run: echo "DOCKER_CONTAINER_STATE=running" >> $GITHUB_STATE
 
       - name: Set Docker Output Value
         id: set-docker-output
-        run: |
-          echo "CONTAINER_NAME=local-ai" >> $GITHUB_OUTPUT
+        run: echo "CONTAINER_NAME=local-ai" >> $GITHUB_OUTPUT
 
       - name: Use Docker Output
-        run: |
-          echo "The Docker container name is ${{ steps.set-docker-output.outputs.CONTAINER_NAME }}"
+        run: echo "The Docker container name is ${{ steps.set-docker-output.outputs.CONTAINER_NAME }}"
